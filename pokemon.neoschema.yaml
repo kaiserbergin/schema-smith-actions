@@ -13,7 +13,7 @@ graphs:
             type: string
           - name: hp
             type: integer
-          - name: LOCATION
+          - name: location
             type: point
       - label: Trainer
         properties:
@@ -28,7 +28,7 @@ graphs:
         connections:
           - Pokemon->Trainer
     constraints:
-      - name: pokemonuq
+      - name: PokemonId_UK
         type: unique
         entity:
           type: node
@@ -42,6 +42,6 @@ graphs:
           type: node
           id: Pokemon
           properties:
-            - LOCATION
+            - location
 
           
