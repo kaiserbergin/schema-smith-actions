@@ -24,3 +24,5 @@ jobs:
       run: dotnet tool install -g schemasmith --prerelease
     - name: Lint
       run: schemasmith lint -f pokemon.neoschema.yaml
+    - name: Generate Script
+      run: schemasmith script -o ./publish/cypher-script.cypher -f pokemon.neoschema.yaml
