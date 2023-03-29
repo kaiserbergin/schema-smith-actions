@@ -22,5 +22,5 @@ runs:
       path: run-cypher
   - name: Run Script
     shell: bash
-    run: schemasmith run-script -f ${{steps.download.outputs.download-path}}/cypher-script.cypher -s ${{inputs.server_url}} -u ${{inputs.NEO4J_USERNAME}} -p ${{inputs.NEO4J_USERNAME}} 
+    run: schemasmith run-script -f ${{steps.download.outputs.download-path}}/cypher-script.cypher -s ${{inputs.server_url}} -u ${{inputs.NEO4J_USERNAME}} -p ${{inputs.NEO4J_PASSWORD}} 
         
