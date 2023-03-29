@@ -15,4 +15,8 @@ jobs:
   release:
     uses: kaiserbergin/schema-smith-actions/.github/workflows/release-schema.yml@main
     needs: create-script
+    with:
+      server_url: neo4j+s://0404ba3e.databases.neo4j.io:7687
+    secrets:
+      envPAT: ${{ secrets.envPAT }}
 
