@@ -1,13 +1,7 @@
-name: SchemaSmith - Lint
+name: Install SchemaSmith
 
-on:
-  workflow_call
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Lint
-      run: schemasmith lint -f pokemon.neoschema.yaml
+runs:
+  using: "composite"
+  steps:
+  - name: Lint
+    run: schemasmith lint -f pokemon.neoschema.yaml

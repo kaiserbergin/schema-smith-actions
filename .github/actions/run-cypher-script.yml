@@ -1,29 +1,21 @@
-name: SchemaSmith - Generate Cypher
-
-on:
-    workflow_call:
-      inputs:
-        server_url:
-          required: true
-          type: string
-      secrets:
-        NEO4J_USERNAME:
-          required: true
-        NEO4J_PASSWORD:
-          required: true
-  
-jobs:
-    build:
-  
-      runs-on: ubuntu-latest
-  
-      steps:
-      - name: Download Script
-        id: download
-        uses: actions/download-artifact@v3
-        with:
-          name: cypher-script
-          path: run-cypher
-      - name: Run Script
-        run: schemasmith run-script -f ${{steps.download.outputs.download-path}}/cypher-script.cypher -s ${{inputs.server_url}} -u ${{secrets.NEO4J_USERNAME}} -p ${{secrets.NEO4J_USERNAME}} 
+name: Install SchemaSmith
+inputs:
+  server_url:
+    required: true
+    type: string
+  NEO4J_USERNAME:
+    required: true
+  NEO4J_PASSWORD:
+    required: true
+runs:
+  using: "composite"
+  steps:
+  - name: Download Script
+    id: download
+    uses: actions/download-artifact@v3
+    with:
+      name: cypher-script
+      path: run-cypher
+  - name: Run Script
+    run: schemasmith run-script -f ${{steps.download.outputs.download-path}}/cypher-script.cypher -s ${{inputs.server_url}} -u ${{inputs.NEO4J_USERNAME}} -p ${{inputs.NEO4J_USERNAME}} 
         
