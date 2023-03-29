@@ -43,5 +43,3 @@ graphs:
           id: Pokemon
           properties:
             - location
-
-          
