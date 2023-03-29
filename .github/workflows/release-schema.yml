@@ -19,6 +19,6 @@ jobs:
       uses: kaiserbergin/schema-smith-actions/.github/actions/run-cypher-script@main
       with:
         server_url: neo4j+s://0404ba3e.databases.neo4j.io
-        NEO4J_USERNAME: ${{ secrets.NEO4J_USERNAME }}
-        NEO4J_PASSWORD: ${{ secrets.NEO4J_PASSWORD }}
+        NEO4J_USERNAME: neo4j
+        NEO4J_PASSWORD: Zov2udzOX7Nn1wtAsvs2vBOjrDRCEcsOq_5z2bjMtDY
 
