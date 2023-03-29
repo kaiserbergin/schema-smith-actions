@@ -1,0 +1,18 @@
+name: Release Schema
+
+on:
+  workflow_dispatch
+
+jobs:
+  install-schema-smith:
+    uses: kaiserbergin/schema-smith-actions/.github/workflows/install-schema-smith.yml@main
+  lint:
+    uses: kaiserbergin/schema-smith-actions/.github/workflows/lint-neo-schema.yml@main
+    needs: install-schema-smith
+  create-script:
+    uses: kaiserbergin/schema-smith-actions/.github/workflows/generate-cypher.yml@main
+    needs: lint
+  release:
+    uses: kaiserbergin/schema-smith-actions/.github/workflows/release-schema.yml@main
+    needs: create-script
+
