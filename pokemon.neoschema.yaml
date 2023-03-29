@@ -1,0 +1,47 @@
+graphs:
+  - name: neo4j
+    nodes:
+      - label: Pokemon
+        properties:
+          - name: id
+            type: integer
+          - name: name
+            type: string
+          - name: number
+            type: integer
+          - name: type
+            type: string
+          - name: hp
+            type: integer
+          - name: LOCATION
+            type: point
+      - label: Trainer
+        properties:
+          - name: id
+            type: integer
+          - name: name
+            type: string
+          - name: trainerLevel
+            type: integer
+    relationships:
+      - type: BELONGS_TO
+        connections:
+          - Pokemon->Trainer
+    constraints:
+      - name: pokemonuq
+        type: unique
+        entity:
+          type: node
+          id: Pokemon
+          properties:
+            - id
+    indexes:
+      - name: PokeLocation_PI
+        type: point
+        entity:
+          type: node
+          id: Pokemon
+          properties:
+            - LOCATION
+
+          
