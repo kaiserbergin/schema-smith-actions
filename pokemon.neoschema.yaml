@@ -15,6 +15,8 @@ graphs:
             type: integer
           - name: location
             type: point
+          - name: moves
+            type: list(string)
       - label: Trainer
         properties:
           - name: id
