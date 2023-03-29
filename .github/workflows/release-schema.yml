@@ -4,20 +4,19 @@ on:
   workflow_dispatch
 
 jobs:
-  install-schema-smith:
-    uses: kaiserbergin/schema-smith-actions/.github/workflows/install-schema-smith.yml@main
-  lint:
-    uses: kaiserbergin/schema-smith-actions/.github/workflows/lint-neo-schema.yml@main
-    needs: install-schema-smith
-  create-script:
-    uses: kaiserbergin/schema-smith-actions/.github/workflows/generate-cypher.yml@main
-    needs: lint
   release:
-    uses: kaiserbergin/schema-smith-actions/.github/workflows/run-cypher-script.yml@main
-    needs: create-script
-    with:
-      server_url: neo4j+s://0404ba3e.databases.neo4j.io:7687
-    secrets:
-      NEO4J_USERNAME: ${{ secrets.NEO4J_USERNAME }}
-      NEO4J_PASSWORD: ${{ secrets.NEO4J_PASSWORD }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install SchemaSmith
+      uses: kaiserbergin/schema-smith-actions/.github/workflows/install-schema-smith.yml@main
+    - name: Lint
+      uses: kaiserbergin/schema-smith-actions/.github/workflows/lint-neo-schema.yml@main
+    - name: Generate Script
+      uses: kaiserbergin/schema-smith-actions/.github/workflows/generate-cypher.yml@main
+    - name: Release Schema
+      uses: kaiserbergin/schema-smith-actions/.github/workflows/run-cypher-script.yml@main
+      with:
+        server_url: neo4j+s://0404ba3e.databases.neo4j.io:7687
+        NEO4J_USERNAME: ${{ secrets.NEO4J_USERNAME }}
+        NEO4J_PASSWORD: ${{ secrets.NEO4J_PASSWORD }}
 
