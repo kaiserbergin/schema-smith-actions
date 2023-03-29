@@ -1,7 +1,14 @@
-name: Install SchemaSmith
+name: Lint Schema
+description: Lints your schema file
+
+inputs:
+  schema_file_path:
+    description: full path to file
+    required: true
 
 runs:
   using: "composite"
   steps:
   - name: Lint
-    run: schemasmith lint -f pokemon.neoschema.yaml
+    shell: bash
+    run: schemasmith lint -f ${{ inputs.schema_file_path }}

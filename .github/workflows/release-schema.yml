@@ -11,6 +11,8 @@ jobs:
       uses: kaiserbergin/schema-smith-actions/.github/actions/install-schema-smith@main
     - name: Lint
       uses: kaiserbergin/schema-smith-actions/.github/actions/lint-neo-schema@main
+      with:
+        schema_file_path: pokemon.neoschema.yaml
     - name: Generate Script
       uses: kaiserbergin/schema-smith-actions/.github/actions/generate-cypher@main
     - name: Release Schema

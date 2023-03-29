@@ -1,11 +1,15 @@
-name: Install SchemaSmith
+name: Run Cyhper Script
+description: Runs cypher script against database
+
 inputs:
   server_url:
+    description: neo4j server url
     required: true
-    type: string
   NEO4J_USERNAME:
+    description: neo4j username
     required: true
   NEO4J_PASSWORD:
+    description: neo4j password
     required: true
 runs:
   using: "composite"
@@ -17,5 +21,6 @@ runs:
       name: cypher-script
       path: run-cypher
   - name: Run Script
+    shell: bash
     run: schemasmith run-script -f ${{steps.download.outputs.download-path}}/cypher-script.cypher -s ${{inputs.server_url}} -u ${{inputs.NEO4J_USERNAME}} -p ${{inputs.NEO4J_USERNAME}} 
         

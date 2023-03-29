@@ -1,9 +1,11 @@
-name: Install SchemaSmith
+name: Generate Cypher
+description: Generates cypher script from yml schema
 
 runs:
   using: "composite"
   steps:
   - name: Generate Script
+    shell: bash
     run: schemasmith script -o ./publish/cypher-script.cypher -f pokemon.neoschema.yaml
   - name: Upload a Build Artifact
     uses: actions/upload-artifact@v3.1.2
