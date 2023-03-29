@@ -8,13 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Install SchemaSmith
-      uses: kaiserbergin/schema-smith-actions/.github/workflows/install-schema-smith.yml@main
+      uses: kaiserbergin/schema-smith-actions/.github/actions/install-schema-smith.yml@main
     - name: Lint
-      uses: kaiserbergin/schema-smith-actions/.github/workflows/lint-neo-schema.yml@main
+      uses: kaiserbergin/schema-smith-actions/.github/actions/lint-neo-schema.yml@main
     - name: Generate Script
-      uses: kaiserbergin/schema-smith-actions/.github/workflows/generate-cypher.yml@main
+      uses: kaiserbergin/schema-smith-actions/.github/actions/generate-cypher.yml@main
     - name: Release Schema
-      uses: kaiserbergin/schema-smith-actions/.github/workflows/run-cypher-script.yml@main
+      uses: kaiserbergin/schema-smith-actions/.github/actions/run-cypher-script.yml@main
       with:
         server_url: neo4j+s://0404ba3e.databases.neo4j.io:7687
         NEO4J_USERNAME: ${{ secrets.NEO4J_USERNAME }}
