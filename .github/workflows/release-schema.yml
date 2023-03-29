@@ -13,10 +13,11 @@ jobs:
     uses: kaiserbergin/schema-smith-actions/.github/workflows/generate-cypher.yml@main
     needs: lint
   release:
-    uses: kaiserbergin/schema-smith-actions/.github/workflows/release-schema.yml@main
+    uses: kaiserbergin/schema-smith-actions/.github/workflows/run-cypher-script.yml@main
     needs: create-script
     with:
       server_url: neo4j+s://0404ba3e.databases.neo4j.io:7687
     secrets:
-      envPAT: ${{ secrets.envPAT }}
+      NEO4J_USERNAME: ${{ secrets.NEO4J_USERNAME }}
+      NEO4J_PASSWORD: ${{ secrets.NEO4J_PASSWORD }}
 
